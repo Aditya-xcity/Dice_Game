@@ -1,37 +1,77 @@
-<!DOCTYPE htmL>
-<htmL>
-	<head>	
-	<title>Dice Page</title>
-	<link rel = "icon" href ="images/logo.png" type = "image/x-icon">
-	<link rel ="stylesheet" href="stylesheet/css_file_1.css">
-	<script src="script/js1.js">
-	</script>	
-	</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dice Duel</title>
+	<link rel="icon" href="images/logo.png" type="image/png">
+	<link rel="stylesheet" href="stylesheet/css_file_1.css">
+	<script src="script/js1.js" defer></script>
+</head>
+<body>
+	<header id="header">
+		<h1 id="status" aria-live="polite">Ready to roll?</h1>
+		<p id="subtitle">First to <span id="targetLabel">5</span> wins</p>
+	</header>
 
-	<body onload="RandomImage()">
-		
-		<header id= "header"> 
-			<h1>Refresh Me</h1> 
-		</header>	
-		<main>	
-			<div class="centered">
-				<figure>
-				 	<img src="images/1.png" class="diceimg">
-				 	<figcaption class="caption">Player-1</figcaption>
-				</figure>
-				<figure>
-					<img src="images/1.png" class="diceimg">
-				 	<figcaption class="caption">Player-2</figcaption>	
-				</figure>
-			</div>
-		</main>
+	<main>
+		<section class="arena">
+			<article class="player" id="card1">
+				<input class="name" id="name1" value="Player 1" maxlength="14" aria-label="Player 1 name">
+				<div class="dice-wrap"><img src="images/1.png" class="diceimg" id="die1" alt="Player 1 die"></div>
+				<div class="score"><span id="score1">0</span><small>wins</small></div>
+				<div class="total">Total pips: <b id="pips1">0</b></div>
+			</article>
 
+			<div class="vs">VS</div>
 
-		<footer>
-			<p> Siddhant Thapliyal, M.Tech(C.S.E.), GEU-Dehradun</p>
-		</footer>
-	</body>
+			<article class="player" id="card2">
+				<input class="name" id="name2" value="Player 2" maxlength="14" aria-label="Player 2 name">
+				<div class="dice-wrap"><img src="images/1.png" class="diceimg" id="die2" alt="Player 2 die"></div>
+				<div class="score"><span id="score2">0</span><small>wins</small></div>
+				<div class="total">Total pips: <b id="pips2">0</b></div>
+			</article>
+		</section>
 
+		<div class="controls">
+			<button id="rollBtn" class="primary">🎲 Roll <kbd>Space</kbd></button>
+			<button id="resetBtn">Reset</button>
+		</div>
 
+		<div class="options">
+			<label>First to
+				<select id="target">
+					<option>3</option><option selected>5</option><option>10</option><option>20</option>
+				</select>
+			</label>
+			<label><input type="checkbox" id="sound" checked> Sound</label>
+			<label><input type="checkbox" id="theme"> Dark mode</label>
+		</div>
 
+		<section class="stats">
+			<div><b id="rounds">0</b><small>Rounds</small></div>
+			<div><b id="draws">0</b><small>Draws</small></div>
+			<div><b id="streak">–</b><small>Streak</small></div>
+			<div><b id="best">0</b><small>Best sum</small></div>
+		</section>
+
+		<section class="history">
+			<h2>History</h2>
+			<ol id="log"><li class="empty">No rolls yet.</li></ol>
+		</section>
+	</main>
+
+	<div id="modal" class="modal" hidden>
+		<div class="modal-box">
+			<div class="trophy">🏆</div>
+			<h2 id="winnerText"></h2>
+			<p id="winnerSub"></p>
+			<button id="againBtn" class="primary">Play again</button>
+		</div>
+	</div>
+
+	<footer>
+		<p>Siddhant Thapliyal, M.Tech(C.S.E.), GEU-Dehradun</p>
+	</footer>
+</body>
 </html>
